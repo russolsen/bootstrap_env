@@ -1,0 +1,16 @@
+#!/bin/sh
+
+while true
+do
+  if [ -r Makefile ]
+  then
+    echo "Using Makefile in `pwd`"
+    exec make "$@"
+  fi
+  cd ..
+  if [ `pwd` = '/' ]
+  then
+    echo "No Makefile found"
+    exit 1
+  fi
+done
