@@ -1,0 +1,7 @@
+#!/bin/sh
+
+FILE=`ls -t $1 | head -1`
+
+echo $1/$FILE
+
+tail -f $1/$FILE

@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+
+import sys
+
+hex_fmt = '{0:2x}'
+offset_fmt = '{0:5d}/{0:4x}:: '
+
+f = open(sys.argv[1], 'rb')
+
+count = 0
+
+ch = f.read(1)
+
+while ch:
+  if ((count % 16) == 0):
+    print('')
+    print(offset_fmt.format(count), end='')
+  print(hex_fmt.format(ord(ch)), end=' ')
+  ch = f.read(1)
+  count += 1
+print('')
+
