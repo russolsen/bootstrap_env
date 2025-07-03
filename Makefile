@@ -38,9 +38,6 @@ $(ShStartUpPath):
 	touch $@
 
 startup_additions: $(ShStartUpPath)
-	sed -i.bak '/#START ADDITIONS/,/#END ADDITIONS/d' $(ShStartUpPath)
-	echo '#START ADDITIONS' >> $(ShStartUpPath)
-	echo  >> $(ShStartUpPath)
-	cat $(StartUpAdditions) >> $(ShStartUpPath)
-	echo  >> $(ShStartUpPath)
-	echo '#END ADDITIONS' >> $(ShStartUpPath)
+	cat $(StartUpAdditions) >> $(BinDir)/startup_additions.sh
+	sed -i.bak '/#START ADDITIONS/d' $(ShStartUpPath)
+	echo 'source $(BinDir)/startup_additions.sh    #START ADDITIONS' >> $(ShStartUpPath)
